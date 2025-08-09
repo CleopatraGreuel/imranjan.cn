@@ -19,7 +19,6 @@
           class="hero-video active"
         >
           <source src="/videos/hero-video.webm" type="video/webm">
-          <source src="/videos/hero-video.mp4" type="video/mp4">
           您的浏览器不支持视频播放，请升级浏览器或使用现代浏览器访问
         </video>
 
