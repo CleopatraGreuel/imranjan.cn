@@ -1,0 +1,25 @@
+{
+  "name": "student-portfolio",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "markdownlint-cli": "^0.45.0",
+    "nuxt": "^3.8.0"
+  },
+  "dependencies": {
+    "@fastify/accept-negotiator": "^1.1.0",
+    "@nuxt/content": "^2.8.5",
+    "@nuxt/image": "^1.10.0",
+    "@nuxtjs/tailwindcss": "^6.8.4",
+    "photoswipe": "^5.4.2",
+    "sharp": "file:../sharp-0.33.4.tgz",
+    "swiper": "^11.0.5"
+  }
+}

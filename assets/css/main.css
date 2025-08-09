@@ -1,0 +1,275 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   MrKriss风格全局样式 - 理工科学生适配版
+======================================== */
+
+@layer base {
+  /* 基础样式重置 */
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    @apply bg-pure-white text-deep-black font-clean;
+    @apply leading-relaxed;
+  }
+
+  /* 滚动条样式 */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-orange rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-amber-800;
+  }
+}
+
+@layer components {
+  /* ========================================
+     导航组件样式
+  ======================================== */
+  .nav-link {
+    @apply text-deep-black hover:text-primary-orange transition-colors duration-200 font-medium;
+    @apply relative;
+  }
+  
+  .nav-link::after {
+    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-orange transition-all duration-200;
+    content: '';
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  .nav-link.router-link-active {
+    @apply text-primary-orange;
+  }
+  
+  .nav-link.router-link-active::after {
+    @apply w-full;
+  }
+
+  /* ========================================
+     签名Logo样式 
+  ======================================== */
+  .signature-logo {
+    @apply block;
+  }
+  
+  .signature-text .signature-name {
+    @apply text-2xl font-signature text-deep-black leading-tight;
+    @apply hover:text-primary-orange transition-colors duration-200;
+  }
+  
+  .signature-text .signature-title {
+    @apply text-xs text-gray-600 block mt-1 font-clean;
+    letter-spacing: 0.1em;
+  }
+
+  /* ========================================
+     时间轴组件样式
+  ======================================== */
+  .timeline-container {
+    @apply relative;
+  }
+  
+  .timeline-line {
+    @apply absolute left-1/2 transform -translate-x-1/2 w-1 bg-primary-orange;
+    @apply opacity-80;
+  }
+  
+  .timeline-dot {
+    @apply absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-primary-orange rounded-full;
+    @apply border-4 border-pure-white shadow-lg z-10;
+    @apply transition-all duration-200 hover:scale-125;
+  }
+  
+  .timeline-item {
+    @apply relative mb-16 cursor-pointer;
+  }
+  
+  .timeline-left {
+    @apply text-right pr-8;
+  }
+  
+  .timeline-right {
+    @apply text-left pl-8;
+  }
+  
+  .timeline-card {
+    @apply bg-pure-white rounded-lg shadow-md p-6 max-w-md;
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .timeline-card-left {
+    @apply mr-8;
+  }
+  
+  .timeline-card-right {
+    @apply ml-8;
+  }
+
+  /* ========================================
+     项目卡片样式
+  ======================================== */
+  .project-card {
+    @apply bg-pure-white rounded-lg shadow-md overflow-hidden;
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
+  }
+  
+  .project-image {
+    @apply relative overflow-hidden;
+  }
+  
+  .project-image img {
+    @apply transition-transform duration-300 group-hover:scale-105;
+  }
+  
+  .project-status {
+    @apply absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .project-status.completed {
+    @apply bg-success-green bg-opacity-10 text-success-green;
+  }
+  
+  .project-status.in-progress {
+    @apply bg-tech-blue bg-opacity-10 text-tech-blue;
+  }
+  
+  .project-status.planned {
+    @apply bg-warning-yellow bg-opacity-10 text-warning-yellow;
+  }
+
+  /* ========================================
+     技术标签样式
+  ======================================== */
+  .tech-tag {
+    @apply bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium;
+    @apply transition-all duration-200 hover:bg-primary-orange hover:text-pure-white;
+  }
+  
+  .tech-tag.primary {
+    @apply bg-primary-orange bg-opacity-10 text-primary-orange;
+  }
+  
+  .tech-tag.secondary {
+    @apply bg-tech-blue bg-opacity-10 text-tech-blue;
+  }
+
+  /* ========================================
+     按钮样式
+  ======================================== */
+  .btn-primary {
+    @apply bg-primary-orange text-pure-white px-6 py-3 rounded-lg font-medium;
+    @apply transition-all duration-200 hover:opacity-90 hover:shadow-lg;
+    @apply active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-tech-blue text-pure-white px-6 py-3 rounded-lg font-medium;
+    @apply transition-all duration-200 hover:opacity-90 hover:shadow-lg;
+    @apply active:scale-95;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary-orange text-primary-orange px-6 py-3 rounded-lg font-medium;
+    @apply transition-all duration-200 hover:bg-primary-orange hover:text-pure-white;
+    @apply active:scale-95;
+  }
+
+  /* ========================================
+     动画效果
+  ======================================== */
+  .fade-in-up {
+    @apply opacity-0 translate-y-4;
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  
+  @keyframes fadeInUp {
+    to {
+      @apply opacity-100 translate-y-0;
+    }
+  }
+
+  /* ========================================
+     高亮效果
+  ======================================== */
+  .highlight-project {
+    @apply ring-4 ring-primary-orange ring-opacity-50 rounded-lg;
+    animation: pulseHighlight 2s ease-in-out;
+  }
+  
+  @keyframes pulseHighlight {
+    0%, 100% { 
+      @apply ring-opacity-50; 
+    }
+    50% { 
+      @apply ring-opacity-100; 
+    }
+  }
+
+  /* ========================================
+     响应式适配
+  ======================================== */
+  @media (max-width: 768px) {
+    .timeline-left,
+    .timeline-right {
+      @apply text-center px-8;
+    }
+    
+    .timeline-card-left,
+    .timeline-card-right {
+      @apply mx-auto;
+    }
+    
+    .timeline-line {
+      @apply left-4;
+    }
+    
+    .timeline-dot {
+      @apply left-4;
+    }
+    
+    .signature-text .signature-name {
+      @apply text-xl;
+    }
+    
+    .signature-text .signature-title {
+      @apply text-xs;
+    }
+  }
+}
+
+@layer utilities {
+  /* 工具类 */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
+  }
+} 
