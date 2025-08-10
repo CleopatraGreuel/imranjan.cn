@@ -975,13 +975,13 @@
                 <h4>项目文档</h4>
                 <div class="document-buttons">
                   <a href="/files/yigui-app-2025/Yigui初赛报告.pdf" download="Yigui初赛报告.pdf" class="project-doc-button">
-                    📄 初赛报告 (2.5MB)
+                    📄 初赛报告 (829KB)
                   </a>
                   <a href="/files/yigui-app-2025/Yigui复赛报告.pdf" download="Yigui复赛报告.pdf" class="project-doc-button">
-                    📄 复赛报告 (3.8MB)
+                    📄 复赛报告 (1.14MB)
                   </a>
                   <a href="/files/yigui-app-2025/App宣传海报.pdf" download="App宣传海报.pdf" class="project-doc-button">
-                    🎨 宣传海报 (61MB)
+                    🎨 宣传海报 (1.31MB)
                   </a>
                 </div>
               </div>
@@ -2079,7 +2079,7 @@
                     <source src="/videos/projects/mengsheng-2024/debug-video-1.webm" type="video/webm" />
                     <p>您的浏览器不支持视频播放。<a href="/videos/projects/mengsheng-2024/debug-video-1.webm" target="_blank" style="color: #ff6b35;">点击下载视频</a></p>
                   </video>
-                  <div class="video-caption">调试视频1 - 数模转换器AD7606调试 (22MB)</div>
+                  <div class="video-caption">调试视频1 - 数模转换器AD7606调试 (13.3MB)</div>
                 </div>
 
                 <div class="video-item">
@@ -2092,7 +2092,7 @@
                     <source src="/videos/projects/mengsheng-2024/debug-video-2.webm" type="video/webm" />
                     <p>您的浏览器不支持视频播放。<a href="/videos/projects/mengsheng-2024/debug-video-2.webm" target="_blank" style="color: #ff6b35;">点击下载视频</a></p>
                   </video>
-                  <div class="video-caption">调试视频2 - 语音识别功能演示 (74MB)</div>
+                  <div class="video-caption">调试视频2 - 语音识别功能演示 (25.9MB)</div>
                 </div>
               </div>
             </div>
