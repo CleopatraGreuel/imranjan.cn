@@ -2002,8 +2002,8 @@
                     class="video-player"
                     poster="/images/projects/mengsheng-2024/cover.jpg"
                   >
-                    <source src="/images/projects/mengsheng-2024/外框架3D建模展示.mp4" type="video/mp4" />
-                    <p>您的浏览器不支持视频播放。<a href="/images/projects/mengsheng-2024/外框架3D建模展示.mp4" target="_blank" style="color: #ff6b35;">点击下载视频</a></p>
+                    <source src="/videos/projects/mengsheng-2024/外框架3D建模展示.webm" type="video/webm" />
+                    <p>您的浏览器不支持视频播放。<a href="/videos/projects/mengsheng-2024/外框架3D建模展示.webm" target="_blank" style="color: #ff6b35;">点击下载视频</a></p>
                   </video>
                   <div class="video-caption">外框架3D建模展示 - SOLIDWORKS</div>
                 </div>
@@ -2076,8 +2076,8 @@
                     class="video-player"
                     poster="/images/projects/mengsheng-2024/cover.jpg"
                   >
-                    <source src="/images/projects/mengsheng-2024/debug-video-1.mp4" type="video/mp4" />
-                    <p>您的浏览器不支持视频播放。<a href="/images/projects/mengsheng-2024/debug-video-1.mp4" target="_blank" style="color: #ff6b35;">点击下载视频</a></p>
+                    <source src="/videos/projects/mengsheng-2024/debug-video-1.webm" type="video/webm" />
+                    <p>您的浏览器不支持视频播放。<a href="/videos/projects/mengsheng-2024/debug-video-1.webm" target="_blank" style="color: #ff6b35;">点击下载视频</a></p>
                   </video>
                   <div class="video-caption">调试视频1 - 数模转换器AD7606调试 (22MB)</div>
                 </div>
@@ -2089,8 +2089,8 @@
                     class="video-player"
                     poster="/images/projects/mengsheng-2024/cover.jpg"
                   >
-                    <source src="/images/projects/mengsheng-2024/debug-video-2.mp4" type="video/mp4" />
-                    <p>您的浏览器不支持视频播放。<a href="/images/projects/mengsheng-2024/debug-video-2.mp4" target="_blank" style="color: #ff6b35;">点击下载视频</a></p>
+                    <source src="/videos/projects/mengsheng-2024/debug-video-2.webm" type="video/webm" />
+                    <p>您的浏览器不支持视频播放。<a href="/videos/projects/mengsheng-2024/debug-video-2.webm" target="_blank" style="color: #ff6b35;">点击下载视频</a></p>
                   </video>
                   <div class="video-caption">调试视频2 - 语音识别功能演示 (74MB)</div>
                 </div>
@@ -2631,8 +2631,8 @@
                   class="video-player"
                   poster="/images/projects/led-voice-2025/vid-poster.png"
                 >
-                  <source src="/images/projects/led-voice-2025/demo-video.mp4" type="video/mp4" />
-                  <p>您的浏览器不支持视频播放。<a href="/images/projects/led-voice-2025/demo-video.mp4" target="_blank" style="color: #ff6b35;">点击下载视频</a></p>
+                  <source src="/videos/projects/led-voice-2025/demo-video.webm" type="video/webm" />
+                  <p>您的浏览器不支持视频播放。<a href="/videos/projects/led-voice-2025/demo-video.webm" target="_blank" style="color: #ff6b35;">点击下载视频</a></p>
                 </video>
                 <div class="video-caption">LED语音交互灯板完整功能演示 - 展示5种语音指令的灯光效果</div>
               </div>
@@ -3558,8 +3558,8 @@
                   class="video-player"
                   poster="/images/projects/restaurant-system-2025/首页_导航栏展开.png"
                 >
-                  <source src="/images/projects/restaurant-system-2025/restaurant-system-demo.mp4" type="video/mp4" />
-                  <p>您的浏览器不支持视频播放。<a href="/images/projects/restaurant-system-2025/restaurant-system-demo.mp4" target="_blank" style="color: #ff6b35;">点击下载视频</a></p>
+                  <source src="/videos/projects/restaurant-system-2025/restaurant-system-demo.webm" type="video/webm" />
+                  <p>您的浏览器不支持视频播放。<a href="/videos/projects/restaurant-system-2025/restaurant-system-demo.webm" target="_blank" style="color: #ff6b35;">点击下载视频</a></p>
                 </video>
                 <div class="video-caption">展示了登录、支出录入、数据查询、报表分析、AI智能分析等核心功能的完整操作流程 (15MB)</div>
               </div>
