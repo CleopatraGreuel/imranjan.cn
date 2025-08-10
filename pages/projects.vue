@@ -1584,7 +1584,7 @@
                 <div class="requirements-docs">
                   <h4>竞赛文档</h4>
                   <a
-                    href="/images/projects/mengsheng-2024/project-requirements.pdf"
+                    href="/files/mengsheng-2024/project-requirements.pdf"
                     target="_blank"
                     class="project-doc-button"
                   >

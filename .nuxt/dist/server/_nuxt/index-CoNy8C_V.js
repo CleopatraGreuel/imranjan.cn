@@ -50,11 +50,11 @@ const _sfc_main = {
     ref(null);
     ref(null);
     useHead({
-      title: "首页 - 理工科学生个人网站",
+      title: "首页 - 依木然的个人网站",
       meta: [
         {
           name: "description",
-          content: "专为理工科大学生设计的个人品牌网站，展示技术项目历程、竞赛作品和摄影创作"
+          content: "依木然的个人网站，展示技术项目、竞赛作品和摄影创作"
         }
       ]
     });
