@@ -2113,9 +2113,9 @@
                   </div>
                   <a
                     v-if="showMengshengCertificates"
-                    href="/images/projects/mengsheng-2024/award-certificate.pdf"
+                    href="/images/projects/mengsheng-2024/盟升杯三等奖证书.png"
                     target="_blank"
-                    download="盟升杯三等奖证书.pdf"
+                    download="盟升杯三等奖证书.png"
                     class="download-button"
                   >
                     下载证书
