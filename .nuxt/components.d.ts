@@ -16,6 +16,7 @@ interface _GlobalComponents {
     'GlassCursor': typeof import("../components/GlassCursor.vue")['default']
     'OptimizedImage': typeof import("../components/OptimizedImage.vue")['default']
     'PageHeader': typeof import("../components/PageHeader.vue")['default']
+    'PhotoMasonry': typeof import("../components/PhotoMasonry.vue")['default']
     'ProjectDetails': typeof import("../components/ProjectDetails.vue")['default']
     'ProjectTimeline': typeof import("../components/ProjectTimeline.vue")['default']
     'TheNavigation': typeof import("../components/TheNavigation.vue")['default']
@@ -87,6 +88,7 @@ interface _GlobalComponents {
     'LazyGlassCursor': LazyComponent<typeof import("../components/GlassCursor.vue")['default']>
     'LazyOptimizedImage': LazyComponent<typeof import("../components/OptimizedImage.vue")['default']>
     'LazyPageHeader': LazyComponent<typeof import("../components/PageHeader.vue")['default']>
+    'LazyPhotoMasonry': LazyComponent<typeof import("../components/PhotoMasonry.vue")['default']>
     'LazyProjectDetails': LazyComponent<typeof import("../components/ProjectDetails.vue")['default']>
     'LazyProjectTimeline': LazyComponent<typeof import("../components/ProjectTimeline.vue")['default']>
     'LazyTheNavigation': LazyComponent<typeof import("../components/TheNavigation.vue")['default']>
@@ -164,6 +166,7 @@ export const CodeBlock: typeof import("../components/CodeBlock.vue")['default']
 export const GlassCursor: typeof import("../components/GlassCursor.vue")['default']
 export const OptimizedImage: typeof import("../components/OptimizedImage.vue")['default']
 export const PageHeader: typeof import("../components/PageHeader.vue")['default']
+export const PhotoMasonry: typeof import("../components/PhotoMasonry.vue")['default']
 export const ProjectDetails: typeof import("../components/ProjectDetails.vue")['default']
 export const ProjectTimeline: typeof import("../components/ProjectTimeline.vue")['default']
 export const TheNavigation: typeof import("../components/TheNavigation.vue")['default']
@@ -235,6 +238,7 @@ export const LazyCodeBlock: LazyComponent<typeof import("../components/CodeBlock
 export const LazyGlassCursor: LazyComponent<typeof import("../components/GlassCursor.vue")['default']>
 export const LazyOptimizedImage: LazyComponent<typeof import("../components/OptimizedImage.vue")['default']>
 export const LazyPageHeader: LazyComponent<typeof import("../components/PageHeader.vue")['default']>
+export const LazyPhotoMasonry: LazyComponent<typeof import("../components/PhotoMasonry.vue")['default']>
 export const LazyProjectDetails: LazyComponent<typeof import("../components/ProjectDetails.vue")['default']>
 export const LazyProjectTimeline: LazyComponent<typeof import("../components/ProjectTimeline.vue")['default']>
 export const LazyTheNavigation: LazyComponent<typeof import("../components/TheNavigation.vue")['default']>

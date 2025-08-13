@@ -1,8 +1,8 @@
 <template>
   <div class="optimized-image-container" :style="containerStyle">
     <!-- 占位符 -->
-    <div 
-      v-if="!imageLoaded && placeholder" 
+    <div
+      v-if="!imageLoaded && placeholder"
       class="image-placeholder animate-pulse bg-gray-200"
       :style="placeholderStyle"
     >
@@ -12,50 +12,23 @@
         </svg>
       </div>
     </div>
-    
-    <!-- 使用NuxtPicture获得最佳性能和兼容性 -->
-    <NuxtPicture
-      v-if="usePicture"
-      ref="imageRef"
-      :src="src"
-      :alt="alt"
-      :width="width"
-      :height="height"
-      :quality="quality"
-      :format="formats"
-      :loading="loading"
-      :sizes="responsiveSizes"
-      :preset="preset"
-      :class="imageClass"
-      :style="imageStyle"
-      :placeholder="placeholderSrc"
-      @load="onImageLoad"
-      @error="onImageError"
-    />
-    
-    <!-- 或使用NuxtImg进行基础优化 -->
+
+    <!-- 简化版本的NuxtImg -->
     <NuxtImg
-      v-else
       ref="imageRef"
       :src="src"
       :alt="alt"
-      :width="width"
-      :height="height"
-      :quality="quality"
-      :format="preferredFormat"
-      :loading="loading"
-      :sizes="responsiveSizes"
       :preset="preset"
       :class="imageClass"
       :style="imageStyle"
-      :placeholder="placeholderSrc"
+      :loading="loading"
       @load="onImageLoad"
       @error="onImageError"
     />
-    
+
     <!-- 错误状态 -->
-    <div 
-      v-if="imageError" 
+    <div
+      v-if="imageError"
       class="image-error bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center"
       :style="placeholderStyle"
     >
@@ -72,7 +45,7 @@
 <script setup>
 import { ref, computed, defineProps } from 'vue'
 
-// Props定义 - 增强版支持@nuxt/image所有功能
+// Props定义 - 简化版本
 const props = defineProps({
   src: {
     type: String,
@@ -82,64 +55,17 @@ const props = defineProps({
     type: String,
     default: ''
   },
-  width: {
-    type: [Number, String],
-    default: null
-  },
-  height: {
-    type: [Number, String],
-    default: null
-  },
   loading: {
     type: String,
-    default: 'lazy',
-    validator: (value) => ['lazy', 'eager'].includes(value)
-  },
-  quality: {
-    type: Number,
-    default: 85,
-    validator: (value) => value >= 1 && value <= 100
-  },
-  format: {
-    type: [String, Array],
-    default: 'webp',
-    validator: (value) => {
-      const validFormats = ['webp', 'jpg', 'jpeg', 'png', 'avif', 'gif']
-      if (Array.isArray(value)) {
-        return value.every(f => validFormats.includes(f))
-      }
-      return validFormats.includes(value)
-    }
-  },
-  fit: {
-    type: String,
-    default: 'cover',
-    validator: (value) => ['cover', 'contain', 'fill', 'inside', 'outside'].includes(value)
+    default: 'lazy'
   },
   placeholder: {
     type: Boolean,
     default: true
   },
-  // 预设配置：hero, project, photo, thumbnail
   preset: {
     type: String,
-    default: '',
-    validator: (value) => ['', 'hero', 'project', 'photo', 'thumbnail'].includes(value)
-  },
-  // 响应式尺寸
-  sizes: {
-    type: String,
-    default: ''
-  },
-  // 是否使用Picture元素（推荐用于关键图片）
-  usePicture: {
-    type: Boolean,
-    default: false
-  },
-  // 模糊占位符
-  blur: {
-    type: [Boolean, Number],
-    default: false
+    default: 'photo'
   },
   class: {
     type: [String, Array, Object],
@@ -152,106 +78,38 @@ const imageLoaded = ref(false)
 const imageError = ref(false)
 const imageRef = ref(null)
 
-// 计算属性
-const containerStyle = computed(() => {
-  const styles = {}
-  if (props.width) styles.width = typeof props.width === 'number' ? `${props.width}px` : props.width
-  if (props.height) styles.height = typeof props.height === 'number' ? `${props.height}px` : props.height
-  return styles
-})
+// 简化的计算属性
+const containerStyle = computed(() => ({}))
 
-const placeholderStyle = computed(() => {
-  const styles = {
-    width: '100%',
-    height: '100%'
-  }
-  if (props.width && props.height) {
-    styles.aspectRatio = `${props.width} / ${props.height}`
-  }
-  return styles
-})
+const placeholderStyle = computed(() => ({
+  width: '100%',
+  height: '100%'
+}))
 
 const imageClass = computed(() => {
   const classes = ['optimized-image', 'transition-opacity', 'duration-300']
-  
+
   if (imageLoaded.value) {
     classes.push('opacity-100')
   } else {
     classes.push('opacity-0')
   }
-  
+
   // 添加用户自定义类
   if (props.class) {
     if (typeof props.class === 'string') {
       classes.push(props.class)
-    } else if (Array.isArray(props.class)) {
-      classes.push(...props.class)
-    } else {
-      Object.keys(props.class).forEach(key => {
-        if (props.class[key]) classes.push(key)
-      })
     }
   }
-  
+
   return classes.join(' ')
 })
 
-const imageStyle = computed(() => {
-  const styles = {
-    objectFit: props.fit,
-    width: '100%',
-    height: '100%'
-  }
-  
-  if (!imageLoaded.value && props.placeholder) {
-    styles.position = 'absolute'
-    styles.top = '0'
-    styles.left = '0'
-  }
-  
-  return styles
-})
-
-// 格式配置
-const preferredFormat = computed(() => {
-  return Array.isArray(props.format) ? props.format[0] : props.format
-})
-
-const formats = computed(() => {
-  if (Array.isArray(props.format)) {
-    return props.format
-  }
-  // 为Picture元素提供多种格式以获得最佳兼容性
-  return ['webp', props.format].filter((f, i, arr) => arr.indexOf(f) === i)
-})
-
-// 响应式尺寸配置
-const responsiveSizes = computed(() => {
-  if (props.sizes) return props.sizes
-  
-  // 根据预设自动生成sizes
-  switch (props.preset) {
-    case 'hero':
-      return '100vw'
-    case 'project':
-      return '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
-    case 'photo':
-      return '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
-    case 'thumbnail':
-      return '(max-width: 768px) 50vw, 25vw'
-    default:
-      return props.width ? `${props.width}px` : '100vw'
-  }
-})
-
-// 占位符图片
-const placeholderSrc = computed(() => {
-  if (!props.blur) return undefined
-  
-  // 生成模糊占位符
-  const blurAmount = typeof props.blur === 'number' ? props.blur : 10
-  return `${props.src}?blur=${blurAmount}&quality=20&width=100`
-})
+const imageStyle = computed(() => ({
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover'
+}))
 
 // 事件处理
 const onImageLoad = () => {
@@ -319,4 +177,4 @@ const onImageError = () => {
 .optimized-image[data-preset="hero"] {
   object-position: center;
 }
-</style> 
+</style>

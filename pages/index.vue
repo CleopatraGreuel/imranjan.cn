@@ -71,11 +71,11 @@ let isTransitioning = false
 
 // SEO配置
 useHead({
-  title: '首页 - 理工科学生个人网站',
+  title: '首页-imranjan mamtimin',
   meta: [
     {
       name: 'description',
-      content: '专为理工科大学生设计的个人品牌网站，展示技术项目历程、竞赛作品和摄影创作'
+      content: 'Hi, I\'m Imranjan Mamtimin. Welcome to my personal website where I share my tech projects, competition works, and photography.'
     }
   ]
 })

@@ -8,61 +8,46 @@ export default {
     '@nuxt/content'
   ],
 
-  // 图片优化配置 - 理工科学生专用高质量配置
+  // 图片优化配置 - 简化版本修复加载问题
   image: {
-    formats: ['webp', 'jpg', 'png'],
+    // 基础配置
     quality: 85,
-    densities: [1, 2],
-    screens: {
-      xs: 320,
-      sm: 640,
-      md: 768,
-      lg: 1024,
-      xl: 1280,
-      xxl: 1536,
-    },
-    // Sharp配置 - 获得最佳图片处理性能
-    sharp: {
-      // 启用所有Sharp优化选项
-    },
-    // 预设配置适合摄影作品展示
+    format: ['webp', 'jpg'],
+
+    // 预设配置
     presets: {
-      hero: {
+      photo: {
         modifiers: {
           format: 'webp',
           quality: 90,
-          width: 2560,
-          height: 1440
+          fit: 'inside'
+        }
+      },
+      lightbox: {
+        modifiers: {
+          format: 'webp',
+          quality: 95,
+          fit: 'inside'
         }
       },
       project: {
         modifiers: {
           format: 'webp',
           quality: 85,
-          width: 800,
-          height: 600
+          fit: 'inside'
         }
       },
-      photo: {
+      hero: {
         modifiers: {
           format: 'webp',
           quality: 90,
-          width: 1200,
-          height: 800
-        }
-      },
-      thumbnail: {
-        modifiers: {
-          format: 'webp',
-          quality: 80,
-          width: 400,
-          height: 300
+          fit: 'cover'
         }
       }
     }
   },
 
-  // SEO配置 - 理工科学生专用
+  // SEO配置
   app: {
     head: {
       title: '依木然的个人网站',

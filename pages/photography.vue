@@ -3,162 +3,152 @@
     <!-- 统一头部组件 -->
     <PageHeader />
 
+    <!-- 左侧悬浮导航 -->
+    <aside class="floating-nav" v-show="!loading && !error">
+      <div class="floating-nav-content">
+        <div class="floating-nav-title">导航</div>
+        <nav class="floating-nav-items">
+          <a
+            v-for="category in photoCategories"
+            :key="category.id"
+            :href="`#${category.id}`"
+            @click="scrollToSection(category.id, $event)"
+            :class="['floating-nav-card', { active: currentSection === category.id }]"
+          >
+            {{ category.title.split('·')[0] }}
+          </a>
+        </nav>
+      </div>
+    </aside>
+
     <!-- 页面内容 -->
     <main class="main-content">
-      <!-- 摄影作品分类 -->
-      <section class="photography-section">
+      <!-- 加载状态 -->
+      <div v-if="loading" class="loading-state">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">正在加载摄影作品...</p>
+      </div>
 
-        <!-- 技术摄影作品 -->
-        <div class="category-section">
-          <h2 class="category-title">技术记录</h2>
-          <div class="photo-grid">
+      <!-- 错误状态 -->
+      <div v-else-if="error" class="error-state">
+        <p class="error-text">加载失败：{{ error }}</p>
+      </div>
 
-            <article class="photo-card">
-              <div class="photo-placeholder">
-                <OptimizedImage
-                  src="/images/photography/cr7.png"
-                  alt="CR7"
-                  preset="photo"
-                  class="photo-image"
-                />
-              </div>
-              <div class="photo-info">
-                <h3 class="photo-title">深夜实验室</h3>
-                <p class="photo-description">记录深夜在实验室调试电路的专注时光</p>
-              </div>
-            </article>
-
-            <article class="photo-card">
-              <div class="photo-placeholder">
-                <div class="placeholder-content">
-                  <p class="placeholder-text">电路板微距摄影</p>
-                </div>
-              </div>
-              <div class="photo-info">
-                <h3 class="photo-title">电路之美</h3>
-                <p class="photo-description">微距镜头下精密电路板的几何美学</p>
-              </div>
-            </article>
-
-            <article class="photo-card">
-              <div class="photo-placeholder">
-                <div class="placeholder-content">
-                  <p class="placeholder-text">项目制作过程</p>
-                </div>
-              </div>
-              <div class="photo-info">
-                <h3 class="photo-title">创作过程</h3>
-                <p class="photo-description">从概念设计到实物制作的完整记录</p>
-              </div>
-            </article>
-
+      <!-- 摄影作品展示 -->
+      <div v-else class="photography-content">
+        <div
+          v-for="category in photoCategories"
+          :key="category.id"
+          :id="category.id"
+          class="category-section"
+        >
+          <div class="category-header">
+            <h2 class="category-title">{{ category.title }}</h2>
+            <p class="category-description">{{ category.description }}</p>
           </div>
+
+          <!-- 使用瀑布流组件展示照片 -->
+          <PhotoMasonry :photos="category.photos" />
         </div>
-
-        <!-- 校园生活摄影 -->
-        <div class="category-section">
-          <h2 class="category-title">校园时光</h2>
-          <div class="photo-grid">
-
-            <article class="photo-card">
-              <div class="photo-placeholder">
-                <div class="placeholder-content">
-                  <p class="placeholder-text">教学楼晨光</p>
-                </div>
-              </div>
-              <div class="photo-info">
-                <h3 class="photo-title">晨光微熹</h3>
-                <p class="photo-description">清晨第一缕阳光洒向教学楼的宁静时刻</p>
-              </div>
-            </article>
-
-            <article class="photo-card">
-              <div class="photo-placeholder">
-                <div class="placeholder-content">
-                  <p class="placeholder-text">图书馆夜景</p>
-                </div>
-              </div>
-              <div class="photo-info">
-                <h3 class="photo-title">书海夜归</h3>
-                <p class="photo-description">深夜图书馆里依然在求知的身影</p>
-              </div>
-            </article>
-
-            <article class="photo-card">
-              <div class="photo-placeholder">
-                <div class="placeholder-content">
-                  <p class="placeholder-text">竞赛现场</p>
-                </div>
-              </div>
-              <div class="photo-info">
-                <h3 class="photo-title">竞技时刻</h3>
-                <p class="photo-description">科技竞赛现场的紧张与专注</p>
-              </div>
-            </article>
-
-          </div>
-        </div>
-
-        <!-- 自然风光 -->
-        <div class="category-section">
-          <h2 class="category-title">自然光影</h2>
-          <div class="photo-grid">
-
-            <article class="photo-card">
-              <div class="photo-placeholder">
-                <div class="placeholder-content">
-                  <p class="placeholder-text">校园四季</p>
-                </div>
-              </div>
-              <div class="photo-info">
-                <h3 class="photo-title">四季轮回</h3>
-                <p class="photo-description">用镜头记录校园中四季的变迁</p>
-              </div>
-            </article>
-
-            <article class="photo-card">
-              <div class="photo-placeholder">
-                <div class="placeholder-content">
-                  <p class="placeholder-text">城市天际线</p>
-                </div>
-              </div>
-              <div class="photo-info">
-                <h3 class="photo-title">都市剪影</h3>
-                <p class="photo-description">现代都市天际线的几何构图</p>
-              </div>
-            </article>
-
-          </div>
-        </div>
-
-      </section>
+      </div>
     </main>
   </div>
 </template>
 
 <script setup>
+// 导入组合式函数
+import { usePhotography } from '~/composables/usePhotography'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+
 // SEO配置
 useHead({
-  title: '摄影作品 - 理工科学生个人网站',
+  title: '摄影作品-imranjan mamtimin',
   meta: [
     {
       name: 'description',
-      content: '理工科学生的摄影作品集，技术与艺术的完美结合，记录校园生活、项目制作和自然风光'
-    },
-    {
-      name: 'keywords',
-      content: '摄影作品,技术摄影,校园摄影,理工科摄影,艺术创作,视觉记录'
+      content: 'My photography collection - capturing moments where technology meets art, from campus life to project documentation and natural landscapes.'
     }
   ]
 })
 
-// 页面进入动画
+// 使用摄影作品数据
+const { photoCategories, loading, error } = usePhotography()
+
+// 当前激活的导航项
+const currentSection = ref('')
+
+// 平滑滚动到指定区域
+const scrollToSection = (sectionId, event) => {
+  event.preventDefault()
+
+  const targetElement = document.getElementById(sectionId)
+  if (targetElement) {
+    // 更新当前选中的节
+    currentSection.value = sectionId
+
+    // 使用scrollIntoView，但添加适当的偏移
+    const yOffset = -100 // 偏移量，确保不被导航栏遮挡
+    const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset
+
+    // 平滑滚动到目标位置
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth'
+    })
+
+    // 保持平滑滚动，不添加高亮效果
+  }
+}
+
+// 滚动监听函数，自动更新当前激活的导航项
+const updateCurrentSection = () => {
+  const sections = [
+    'portrait-indoor',
+    'portrait-outdoor',
+    'night-football',
+    'singapore',
+    'campus',
+    'old-teahouse',
+    'chongqing-yangtze',
+    'haikou',
+    'rosy-cloud'
+  ]
+
+  let activeSection = ''
+
+  // 从上到下遍历，找到第一个进入视口上半部分的section
+  for (const sectionId of sections) {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const rect = element.getBoundingClientRect()
+      // 如果section的顶部在视口上半部分以上，且底部还在视口中
+      if (rect.top <= 200 && rect.bottom > 200) {
+        activeSection = sectionId
+      }
+    }
+  }
+
+  if (activeSection && activeSection !== currentSection.value) {
+    currentSection.value = activeSection
+  }
+}
+
+// 页面挂载后添加滚动监听
 onMounted(() => {
-  const cards = document.querySelectorAll('.photo-card')
-  cards.forEach((card, index) => {
-    setTimeout(() => {
-      card.classList.add('animate-in')
-    }, index * 150)
+  // 添加滚动监听
+  const handleScroll = () => {
+    updateCurrentSection()
+  }
+  window.addEventListener('scroll', handleScroll)
+
+  // 初始化当前section
+  nextTick(() => {
+    updateCurrentSection()
+  })
+
+  // 组件卸载时清理事件监听器
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
   })
 })
 </script>
@@ -169,85 +159,100 @@ onMounted(() => {
   @apply min-h-screen bg-white;
 }
 
+/* 左侧悬浮导航样式 */
+.floating-nav {
+  @apply fixed left-4 top-1/2 transform -translate-y-1/2 z-30;
+  @apply hidden lg:block;
+}
 
+.floating-nav-content {
+  @apply bg-white/90 backdrop-blur-md rounded-xl shadow-xl border border-gray-200;
+  @apply p-3 w-[120px];
+}
+
+.floating-nav-title {
+  @apply text-sm font-medium text-gray-600 mb-3 text-center;
+  @apply border-b border-gray-200 pb-2;
+}
+
+.floating-nav-items {
+  @apply space-y-1;
+}
+
+.floating-nav-card {
+  @apply block px-2 py-2 rounded-lg text-xs font-medium text-center;
+  @apply text-gray-600 hover:text-primary-orange hover:bg-orange-50;
+  @apply transition-all duration-200 no-underline;
+  @apply border border-transparent hover:border-orange-200;
+  @apply leading-tight;
+}
+
+.floating-nav-card.active {
+  @apply bg-primary-orange text-white;
+  @apply shadow-sm border-primary-orange;
+}
+
+
+
+
+
+/* 响应式隐藏导航 */
+@media (max-width: 1024px) {
+  .floating-nav {
+    @apply hidden;
+  }
+}
 
 /* 主要内容区域 */
 .main-content {
-  @apply max-w-6xl mx-auto px-8 py-16;
+  @apply max-w-7xl mx-auto px-8 py-16;
 }
 
-/* 页面标题区域 */
-.page-header {
-  @apply text-center mb-16 pt-8;
+/* 加载状态 */
+.loading-state {
+  @apply flex flex-col items-center justify-center py-20;
 }
 
-.page-title {
-  @apply text-5xl md:text-6xl font-signature text-black mb-4;
+.loading-spinner {
+  @apply w-8 h-8 border-4 border-gray-200 border-t-primary-orange rounded-full animate-spin mb-4;
 }
 
-.page-subtitle {
-  @apply text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed;
+.loading-text {
+  @apply text-gray-600 text-lg;
 }
 
-/* 摄影作品区域 */
-.photography-section {
-  @apply space-y-16;
+/* 错误状态 */
+.error-state {
+  @apply flex items-center justify-center py-20;
+}
+
+.error-text {
+  @apply text-red-600 text-lg;
+}
+
+/* 摄影作品内容 */
+.photography-content {
+  @apply space-y-20;
 }
 
 .category-section {
-  @apply mb-16;
+  @apply mb-20;
+}
+
+.category-header {
+  @apply text-center mb-12;
 }
 
 .category-title {
-  @apply text-3xl font-clean font-medium text-black mb-8 text-center;
+  @apply text-4xl md:text-5xl font-signature text-black mb-4;
+  @apply bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent;
 }
 
-/* 照片网格布局 */
-.photo-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
-}
-
-/* 照片卡片样式 */
-.photo-card {
-  @apply bg-white border border-gray-100 rounded-lg overflow-hidden;
-  @apply transition-all duration-300 hover:shadow-xl hover:border-primary-orange;
-  @apply opacity-0 translate-y-4;
-}
-
-.photo-card.animate-in {
-  @apply opacity-100 translate-y-0;
-}
-
-.photo-placeholder {
-  @apply bg-gray-100 relative overflow-hidden;
-  padding-bottom: 75%; /* 4:3 aspect ratio */
-  position: relative;
-}
-
-.placeholder-content {
-  @apply absolute inset-0 flex items-center justify-center;
-  @apply bg-gray-200 text-gray-500;
-}
-
-.placeholder-text {
-  @apply text-center font-medium;
-}
-
-.photo-image {
-  @apply w-full h-full object-cover transition-transform duration-300;
-  @apply group-hover:scale-105;
-}
-
-.photo-info {
-  @apply p-6;
-}
-
-.photo-title {
-  @apply text-xl font-clean font-medium text-black mb-2;
-}
-
-.photo-description {
-  @apply text-gray-600 text-sm leading-relaxed;
+.category-description {
+  @apply text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed;
+  @apply opacity-0 animate-fade-in-up;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
 }
 
 /* 响应式设计 */
@@ -256,32 +261,57 @@ onMounted(() => {
     @apply px-4 py-12;
   }
 
-  .page-title {
-    @apply text-4xl;
+  .category-title {
+    @apply text-3xl;
   }
 
-  .page-subtitle {
+  .category-description {
     @apply text-base;
   }
 
-  .category-title {
-    @apply text-2xl;
+  .photography-content {
+    @apply space-y-16;
   }
 
-  .photo-grid {
-    @apply grid-cols-1 gap-6;
+  .category-section {
+    @apply mb-16;
   }
 
-
+  .category-header {
+    @apply mb-8;
+  }
 }
 
 /* 动画效果 */
-.photo-card {
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* 悬停效果 */
-.photo-card:hover .photo-image {
-  @apply scale-105;
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
 }
 </style>

@@ -272,15 +272,11 @@
 
 // SEO配置
 useHead({
-  title: '个人简介 - 理工科学生个人网站',
+  title: '个人简介-imranjan mamtimin',
   meta: [
     {
       name: 'description',
-      content: '理工科学生个人简介，专业背景、技能专长、教育经历和个人理念的详细展示'
-    },
-    {
-      name: 'keywords',
-      content: '个人简介,理工科学生,技能专长,教育背景,光电专业,技术创新'
+      content: 'Get to know me - my background in optoelectronics, technical skills, education journey, and what drives my passion for innovation.'
     }
   ]
 })

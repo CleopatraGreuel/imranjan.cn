@@ -1369,7 +1369,7 @@ function defineRenderHandler(render) {
 const scheduledTasks = false;
 
 const tasks = {
-
+  
 };
 
 const __runningTasks__ = {};
@@ -4855,7 +4855,7 @@ const renderer = defineRenderHandler(async (event) => {
       link: getPrefetchLinks(ssrContext, renderer.rendererContext)
     }, headEntryOptions);
     ssrContext.head.push({
-      script: renderPayloadJsonScript({ ssrContext, data: ssrContext.payload })
+      script: renderPayloadJsonScript({ ssrContext, data: ssrContext.payload }) 
     }, {
       ...headEntryOptions,
       // this should come before another end of body scripts
