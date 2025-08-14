@@ -56,7 +56,7 @@
 
     <!-- 底部版权信息 -->
     <footer class="bottom-copyright">
-      <p class="copyright-text">© 2025 依木热尼江·买买提明. 个人网站</p>
+      <p class="copyright-text">© 2025 Imranjan Mamtimin. 个人网站</p>
     </footer>
   </div>
 </template>

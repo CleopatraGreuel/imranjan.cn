@@ -13,7 +13,7 @@
 
           <!-- 联系方式 -->
           <div class="contact-methods">
-            <!-- 微信/QQ -->
+            <!-- 微信 -->
             <div class="contact-method" @click="copyToClipboard('2437000215', 'wechat')">
               <div class="method-icon">
                 <svg fill="currentColor" viewBox="0 0 24 24">
@@ -21,7 +21,7 @@
                 </svg>
               </div>
               <div class="method-content">
-                <span class="method-label">微信/QQ</span>
+                <span class="method-label">微信</span>
                 <span class="method-value">2437000215</span>
               </div>
               <div class="copy-tooltip">点击复制</div>
@@ -351,7 +351,7 @@ const showCopyFeedback = (type) => {
       message = '邮箱已复制到剪贴板'
       break
     case 'wechat':
-      message = '微信/QQ号已复制到剪贴板'
+      message = '微信号已复制到剪贴板'
       break
     case 'address':
       message = '地址已复制到剪贴板'

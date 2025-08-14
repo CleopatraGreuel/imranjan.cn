@@ -132,7 +132,7 @@
         <div class="hero-section">
           <div class="hero-content">
             <div class="hero-text">
-              <span class="project-date">2025年</span>
+              <span class="project-date">2025年5月-2025年8月</span>
               <h1 class="hero-title">中国高校计算机大赛—移动应用创新赛</h1>
               <h2 class="hero-subtitle">Yigui / 依柜：个性化服装设计与虚拟试穿应用</h2>
               <div class="hero-badges">
@@ -253,6 +253,30 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 完整源码 -->
+        <div class="github-section">
+          <div class="github-content">
+            <div class="github-info">
+              <h4>完整源码</h4>
+              <p>由于代码文件较多且结构复杂，完整的软件源码已上传至GitHub仓库。前端包含Swift代码和CoreML模型，后端包含Blender脚本、API接口、数据库设计等。</p>
+            </div>
+            <div class="github-buttons">
+              <a href="https://github.com/narmi924/YiguiApp" target="_blank" class="github-repo-btn">
+                <svg class="github-icon" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                前端源码 (YiguiApp )
+              </a>
+              <a href="https://github.com/narmi924/yigui-server" target="_blank" class="github-repo-btn">
+                <svg class="github-icon" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                后端源码 (yigui-server)
+              </a>
             </div>
           </div>
         </div>
@@ -510,123 +534,48 @@
           <div class="section-header">
             <h3 class="section-title">系统架构设计</h3>
           </div>
-          <div class="hardware-content">
-            <div class="hardware-description">
+          <div class="simple-content">
+            <div class="content-description">
               <p>
-                系统采用前后端分离的混合架构设计，前端基于SwiftUI+CoreML实现本地推理与隐私保护，
-                后端采用微服务架构部署于Ubuntu服务器，提供用户认证、设计管理、3D模型处理等核心服务。
+                整个系统采用前后端分离的架构，前端是iOS应用，后端是部署在Ubuntu服务器上的Python API。
+                前端主要负责用户界面和本地的AI推理，后端处理用户数据、3D模型生成和复杂的计算任务。
+                这样设计的好处是用户的身体数据不需要上传到服务器，保护了隐私。
               </p>
+
+              <h4>前端架构</h4>
               <p>
-                整个架构遵循"隐私优先、性能优化、弹性扩展"的设计原则，通过合理的技术栈选型和模块化拆分，
-                实现了高可用、高性能的虚拟试穿服务平台。所有关键数据传输均采用HTTPS加密和JWT认证机制。
+                iOS应用使用SwiftUI开发，界面响应式设计，支持不同尺寸的iPhone。
+                最关键的是集成了CoreML框架，可以在手机本地运行AI模型来预测用户的身体比例，
+                这样用户输入的身高体重等数据完全不会离开设备。
+                还用了SceneKit来实时渲染3D人体模型，让用户能看到试穿效果。
               </p>
-            </div>
 
-            <!-- iOS前端架构 -->
-            <div class="hardware-section">
-              <h4>iOS前端架构</h4>
-              <div class="hardware-description">
-                <p>
-                  iOS前端采用SwiftUI构建现代化界面，集成CoreML框架实现设备端AI推理，
-                  确保用户隐私的同时提供流畅的交互体验。系统架构遵循MVVM模式，
-                  通过Combine框架实现响应式数据绑定。
-                </p>
-                <div class="hardware-specs">
-                  <ul>
-                    <li>SwiftUI声明式UI框架，现代化界面构建</li>
-                    <li>CoreML本地推理，支持离线AI模型运行</li>
-                    <li>Combine响应式编程，状态管理和数据绑定</li>
-                    <li>SceneKit 3D渲染引擎，支持实时模型展示</li>
-                    <li>Vision框架集成，人体检测和图像处理</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+              <h4>后端架构</h4>
+              <p>
+                后端基于Python的FastAPI框架，我把它拆分成了三个独立的服务：
+                用户认证服务负责登录注册，模型处理服务负责3D建模和Blender渲染，
+                设计管理服务负责保存用户的设计作品。每个服务都可以独立部署和维护。
+                用Redis做缓存加速常用数据的读取，用Dramatiq处理耗时的后台任务比如3D渲染。
+              </p>
 
-            <!-- 微服务后端架构 -->
-            <div class="hardware-section">
-              <h4>微服务后端架构</h4>
-              <div class="hardware-layout right-image">
-                <div class="hardware-specs">
-                  <ul>
-                    <li>FastAPI异步框架，高性能RESTful API</li>
-                    <li>三服务分离：用户认证、模型处理、设计管理</li>
-                    <li>Dramatiq+Redis异步任务队列管理</li>
-                    <li>SQLite+MySQL混合数据存储策略</li>
-                    <li>Nginx反向代理，SSL/HTTPS安全传输</li>
-                  </ul>
-                </div>
-                <div class="hardware-image-container">
-                  <div class="gallery-item" @click="openImageModal('/images/projects/yigui-app-2025/虚拟装配流水线示意图.png', '虚拟装配流水线示意图')">
-                    <NuxtImg
-                      src="/images/projects/yigui-app-2025/虚拟装配流水线示意图.png"
-                      alt="虚拟装配流水线示意图"
-                      preset="photo"
-                      class="hardware-image"
-                      :style="{ objectFit: 'contain' }"
-                    />
-                    <span class="gallery-caption">虚拟装配流水线 - 微服务架构图</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <h4>数据流设计</h4>
+              <p>
+                用户在前端输入身体参数后，CoreML模型直接在本地计算出详细的身体比例。
+                然后前端把这些计算结果发送给后端，后端使用Blender生成对应的3D人体模型。
+                整个过程中，用户的原始身体数据从不离开手机，传输的只是处理后的参数。
+                所有网络传输都使用HTTPS加密，API访问需要JWT认证。
+              </p>
 
-            <!-- 数据流与安全 -->
-            <div class="hardware-section">
-              <h4>数据流与安全机制</h4>
-              <div class="hardware-description">
-                <p>
-                  系统采用多层安全机制保护用户数据和业务逻辑，从JWT令牌认证、HTTPS加密传输，
-                  到CoreML本地推理避免敏感数据上传。数据流设计遵循最小权限原则，
-                  确保系统安全性与用户隐私保护的最佳平衡。
-                </p>
-                <div class="hardware-specs">
-                  <ul>
-                    <li>JWT令牌认证，无状态会话管理</li>
-                    <li>HTTPS全链路加密，数据传输安全</li>
-                    <li>CoreML本地推理，敏感数据不上传</li>
-                    <li>Redis缓存机制，提升响应性能</li>
-                    <li>异步任务队列，避免长时间阻塞</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- 技术栈总览 -->
-            <div class="tech-specs-section">
-              <h4>技术栈总览</h4>
-              <div class="specs-overview">
-                <div class="specs-category">
-                  <h5>📱 iOS前端</h5>
-                  <div class="specs-list">
-                    <span class="spec-item">SwiftUI + Combine</span>
-                    <span class="spec-item">CoreML + Vision</span>
-                    <span class="spec-item">SceneKit 3D</span>
-                  </div>
-                </div>
-                <div class="specs-category">
-                  <h5>🐍 Python后端</h5>
-                  <div class="specs-list">
-                    <span class="spec-item">FastAPI + Dramatiq</span>
-                    <span class="spec-item">SQLite + MySQL</span>
-                    <span class="spec-item">Blender Python</span>
-                  </div>
-                </div>
-                <div class="specs-category">
-                  <h5>🔧 基础设施</h5>
-                  <div class="specs-list">
-                    <span class="spec-item">Ubuntu 20.04</span>
-                    <span class="spec-item">Nginx + SSL</span>
-                    <span class="spec-item">Redis 缓存</span>
-                  </div>
-                </div>
-                <div class="specs-category">
-                  <h5>🔒 安全机制</h5>
-                  <div class="specs-list">
-                    <span class="spec-item">JWT 认证</span>
-                    <span class="spec-item">HTTPS 加密</span>
-                    <span class="spec-item">本地推理</span>
-                  </div>
+              <div class="architecture-diagram">
+                <div class="gallery-item" @click="openImageModal('/images/projects/yigui-app-2025/虚拟装配流水线示意图.png', '虚拟装配流水线示意图')">
+                  <NuxtImg
+                    src="/images/projects/yigui-app-2025/虚拟装配流水线示意图.png"
+                    alt="虚拟装配流水线示意图"
+                    preset="photo"
+                    class="diagram-image clickable-image"
+                    :style="{ objectFit: 'contain' }"
+                  />
+                  <span class="gallery-caption">虚拟装配流水线 - 从数据输入到3D模型生成的完整流程</span>
                 </div>
               </div>
             </div>
@@ -638,132 +587,57 @@
           <div class="section-header">
             <h3 class="section-title">算法与模型（CoreML）</h3>
           </div>
-          <div class="hardware-content">
-            <div class="hardware-description">
+          <div class="simple-content">
+            <div class="content-description">
               <p>
-                CoreML算法系统采用轻量级神经网络架构，专门针对移动端推理进行深度优化。
-                系统通过三轮迭代收敛算法解决人体比例预测中的循环依赖问题，在保证推理精度的同时实现毫秒级响应。
+                这个项目最核心的技术挑战是如何在手机上准确预测用户的身体比例。
+                传统的做法需要把用户数据发送到服务器处理，但这样会有隐私风险。
+                我选择了CoreML方案，把AI模型直接部署在iPhone上，用户的身体数据完全不会离开设备。
+              </p>
+
+              <h4>三轮迭代收敛算法</h4>
+              <p>
+                人体比例预测的难点在于不同身体部位之间存在复杂的依赖关系，比如胸围会影响肩宽的计算，
+                而肩宽又会反过来影响胸围的估算。我设计了一个三轮迭代算法来解决这个循环依赖问题：
+              </p>
+
+              <div class="algorithm-diagram">
+                <div class="gallery-item" @click="openImageModal('/images/projects/yigui-app-2025/CoreML 算法流程图.png', 'CoreML算法流程图')">
+                  <NuxtImg
+                    src="/images/projects/yigui-app-2025/CoreML 算法流程图.png"
+                    alt="CoreML算法流程图"
+                    preset="photo"
+                    class="diagram-image clickable-image"
+                    :style="{ objectFit: 'contain' }"
+                  />
+                  <span class="gallery-caption">CoreML三轮迭代收敛算法流程图</span>
+                </div>
+              </div>
+
+              <p>
+                第一轮基于身高体重做粗略估算，第二轮利用第一轮结果优化局部比例，
+                第三轮进行全局校正确保所有比例协调一致。每轮迭代都会收敛到更精确的结果，
+                最终预测精度能达到95%以上。
+              </p>
+
+              <h4>模型优化与性能</h4>
+              <p>
+                为了在手机上流畅运行，我对模型做了大量优化。
+                使用量化压缩把模型大小控制在15MB以下，利用A12芯片的Neural Engine进行硬件加速，
+                推理时间控制在50毫秒内，用户输入参数后几乎能实时看到预测结果。
               </p>
               <p>
-                整个算法模块遵循"隐私优先、本地推理、参数驱动"的核心原则，将用户偏好与体型信息映射为可解释、
-                可复现的参数化设计方案，确保数据不离开设备的同时提供个性化的虚拟试穿体验。
+                另外还实现了智能缓存机制，相似的身体参数会复用之前的计算结果，
+                进一步提升响应速度。整个算法支持iOS 14以上的设备，也能完全离线运行。
               </p>
-            </div>
 
-            <!-- CoreML身体比例预测 -->
-            <div class="hardware-section">
-              <h4>CoreML身体比例预测引擎</h4>
-              <div class="hardware-description">
-                <p>
-                  CoreML身体比例预测引擎采用三轮迭代收敛算法，通过分析用户身高体重等基础数据，
-                  智能预测胸围、腰围、臀围等关键身体比例参数。整个预测过程完全在设备本地完成，
-                  确保用户隐私的同时提供毫秒级的响应速度。
-                </p>
-                <div class="hardware-specs">
-                  <ul>
-                    <li>三轮迭代收敛算法，解决循环依赖问题</li>
-                    <li>本地推理处理，用户数据不上传云端</li>
-                    <li>毫秒级响应速度，支持实时预览</li>
-                    <li>A12仿生芯片Neural Engine硬件加速</li>
-                    <li>量化压缩模型，内存占用<30MB</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- 参数化设计引擎 -->
-            <div class="hardware-section">
-              <h4>参数化设计引擎</h4>
-              <div class="hardware-layout right-image">
-                <div class="hardware-specs">
-                  <ul>
-                    <li>HSV色彩空间智能颜色匹配算法</li>
-                    <li>基于纹理库的图案智能检索系统</li>
-                    <li>多维度体型数据参数化处理</li>
-                    <li>协同过滤+内容过滤混合推荐</li>
-                    <li>可解释性参数输出，支持调试</li>
-                  </ul>
-                </div>
-                <div class="hardware-image-container">
-                  <div class="gallery-item" @click="openImageModal('/images/projects/yigui-app-2025/Figma初步原型设计.png', '参数化设计流程')">
-                    <NuxtImg
-                      src="/images/projects/yigui-app-2025/Figma初步原型设计.png"
-                      alt="参数化设计流程"
-                      preset="photo"
-                      class="hardware-image"
-                      :style="{ objectFit: 'contain' }"
-                    />
-                    <span class="gallery-caption">参数化设计流程与界面原型</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 移动端优化策略 -->
-            <div class="hardware-section">
-              <h4>移动端性能优化</h4>
-              <div class="hardware-layout left-image">
-                <div class="hardware-image-container">
-                  <div class="gallery-item" @click="openImageModal('/images/projects/yigui-app-2025/同理心地图.png', '用户体验优化分析')">
-                    <NuxtImg
-                      src="/images/projects/yigui-app-2025/同理心地图.png"
-                      alt="用户体验优化分析"
-                      preset="photo"
-                      class="hardware-image"
-                      :style="{ objectFit: 'contain' }"
-                    />
-                    <span class="gallery-caption">用户体验分析与性能优化策略</span>
-                  </div>
-                </div>
-                <div class="hardware-specs">
-                  <ul>
-                    <li>模型权重量化压缩，模型大小<15MB</li>
-                    <li>Metal Performance Shaders渲染加速</li>
-                    <li>智能缓存策略，推理结果复用</li>
-                    <li>异步渲染队列，避免UI阻塞</li>
-                    <li>多级LOD优化，适配不同设备性能</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- 算法性能指标 -->
-            <div class="tech-specs-section">
-              <h4>算法性能指标</h4>
-              <div class="specs-overview">
-                <div class="specs-category">
-                  <h5>⚡ 推理性能</h5>
-                  <div class="specs-list">
-                    <span class="spec-item">推理时间: <50ms</span>
-                    <span class="spec-item">内存占用: <30MB</span>
-                    <span class="spec-item">CPU利用率: <20%</span>
-                  </div>
-                </div>
-                <div class="specs-category">
-                  <h5>📱 设备兼容</h5>
-                  <div class="specs-list">
-                    <span class="spec-item">A12芯片及以上</span>
-                    <span class="spec-item">iOS 14.0+</span>
-                    <span class="spec-item">离线运行支持</span>
-                  </div>
-                </div>
-                <div class="specs-category">
-                  <h5>🎯 算法精度</h5>
-                  <div class="specs-list">
-                    <span class="spec-item">比例预测: 95%+</span>
-                    <span class="spec-item">收敛率: >99%</span>
-                    <span class="spec-item">推荐准确: 87%+</span>
-                  </div>
-                </div>
-                <div class="specs-category">
-                  <h5>🔒 隐私保护</h5>
-                  <div class="specs-list">
-                    <span class="spec-item">本地推理</span>
-                    <span class="spec-item">数据不上传</span>
-                    <span class="spec-item">设备端加密</span>
-                  </div>
-                </div>
-              </div>
+              <h4>服装设计推荐</h4>
+              <p>
+                基于预测出的身体比例，我还实现了个性化的服装设计推荐功能。
+                采用HSV色彩空间来匹配适合的颜色，结合用户的设计偏好和流行趋势，
+                推荐合适的图案和样式。推荐算法结合了协同过滤和内容过滤的方法，
+                准确率能达到87%左右。
+              </p>
             </div>
           </div>
         </div>
@@ -774,146 +648,51 @@
           <div class="section-header">
             <h3 class="section-title">后端系统与API设计</h3>
           </div>
-          <div class="hardware-content">
-            <div class="hardware-description">
+          <div class="simple-content">
+            <div class="content-description">
               <p>
-                后端系统基于Python FastAPI框架构建，采用微服务架构和RESTful API设计原则，提供完整的用户管理、
-                3D模型处理、虚拟试穿等核心服务。系统支持异步任务处理，通过Redis任务队列管理耗时的AI推理和Blender渲染操作。
+                后端主要负责处理那些手机无法完成的复杂任务，包括3D人体建模、服装渲染、用户数据管理等。
+                我选择了Python的FastAPI框架，主要是因为它的异步特性和自动API文档生成功能，
+                对于需要处理大量并发请求的应用来说很合适。
+              </p>
+
+              <h4>微服务拆分</h4>
+              <p>
+                我把后端拆分成了三个独立的服务，这样每个服务可以单独开发和部署：
               </p>
               <p>
-                部署在Ubuntu 20.04服务器上，采用Nginx反向代理和Gunicorn WSGI服务器，
-                具备良好的扩展性、稳定性和高并发处理能力。整个后端架构遵循模块化设计，便于维护和功能扩展。
+                <strong>用户认证服务</strong>负责注册登录和JWT令牌管理；
+                <strong>模型处理服务</strong>专门处理3D建模和Blender渲染任务；
+                <strong>设计管理服务</strong>负责保存用户的设计作品和推荐算法。
+                这样的好处是如果某个服务出问题，其他服务还能正常运行。
               </p>
-            </div>
 
-            <!-- FastAPI微服务架构 -->
-            <div class="hardware-section">
-              <h4>FastAPI微服务架构</h4>
-              <div class="hardware-description">
-                <p>
-                  FastAPI微服务架构采用三服务分离设计：用户认证服务、模型处理服务和设计管理服务。
-                  每个服务独立部署，通过标准RESTful API进行通信，支持水平扩展和独立维护。
-                  框架基于Python异步特性，提供优异的并发处理能力。
-                </p>
-                <div class="hardware-specs">
-                  <ul>
-                    <li>FastAPI异步框架，支持高并发API请求处理</li>
-                    <li>三服务分离：用户认证、模型处理、设计管理</li>
-                    <li>RESTful API设计，标准化接口规范</li>
-                    <li>自动生成API文档，支持Swagger UI交互测试</li>
-                    <li>异步请求处理，提升系统响应性能</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+              <h4>3D建模与渲染</h4>
+              <p>
+                最复杂的部分是3D人体建模。当前端发送身体参数后，后端需要调用Blender的Python API，
+                根据这些参数调整预设的3D人体模型，然后渲染出最终的试穿效果。
+              </p>
+              <p>
+                由于3D渲染非常耗时，我使用了Dramatiq任务队列把这些操作放到后台异步执行。
+                用户提交请求后会立即收到一个任务ID，然后可以通过轮询API来查看渲染进度。
+                这样就不会因为长时间等待而导致超时错误。
+              </p>
 
-            <!-- 数据库与缓存系统 -->
-            <div class="hardware-section">
-              <h4>数据库与缓存系统</h4>
-              <div class="hardware-description">
-                <p>
-                  数据库与缓存系统采用SQLite本地存储和Redis内存缓存的混合架构，
-                  通过SQLAlchemy ORM简化数据操作，连接池优化并发性能。
-                  系统设计遵循数据一致性原则，确保缓存与数据库的同步更新。
-                </p>
-                <div class="hardware-specs">
-                  <ul>
-                    <li>SQLite本地数据库，存储用户信息和设计数据</li>
-                    <li>Redis缓存系统，加速频繁访问的数据读取</li>
-                    <li>SQLAlchemy ORM框架，简化数据库操作</li>
-                    <li>数据库连接池，优化并发访问性能</li>
-                    <li>定期备份机制，确保数据安全性</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+              <h4>数据存储与缓存</h4>
+              <p>
+                数据存储方面，我选择了SQLite作为主数据库，因为这个项目数据量不大，SQLite足够用，
+                而且部署简单不需要单独的数据库服务器。
+                同时用Redis做缓存，把经常访问的用户信息和计算结果缓存起来，
+                大大提升了API的响应速度。
+              </p>
 
-            <!-- 异步任务队列 -->
-            <div class="hardware-section">
-              <h4>异步任务队列系统</h4>
-              <div class="hardware-description">
-                <p>
-                  异步任务队列系统基于Dramatiq和Redis构建，专门处理3D渲染、AI推理等耗时操作。
-                  通过将重任务从主线程分离，确保API响应速度的同时提供强大的后台处理能力。
-                  系统支持任务优先级调度、失败重试和进度监控等企业级特性。
-                </p>
-                <div class="hardware-specs">
-                  <ul>
-                    <li>Dramatiq+Redis异步任务队列，处理耗时操作</li>
-                    <li>Blender 3D渲染任务，支持后台批量处理</li>
-                    <li>AI模型推理任务，避免阻塞主线程</li>
-                    <li>任务状态跟踪，实时监控处理进度</li>
-                    <li>失败重试机制，确保任务执行可靠性</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- 部署与运维 -->
-            <div class="hardware-section">
-              <h4>部署与运维系统</h4>
-              <div class="hardware-layout right-image">
-                <div class="hardware-specs">
-                  <ul>
-                    <li>Ubuntu 20.04 LTS服务器，稳定的生产环境</li>
-                    <li>Nginx反向代理，SSL/HTTPS安全传输</li>
-                    <li>Gunicorn WSGI服务器，多进程并发处理</li>
-                    <li>systemd守护进程，自动重启和服务管理</li>
-                    <li>完整日志记录，错误追踪和性能监控</li>
-                  </ul>
-                </div>
-                <div class="hardware-image-container">
-                  <div class="gallery-item" @click="openImageModal('/images/projects/yigui-app-2025/同理心地图.png', '系统运维监控')">
-                    <NuxtImg
-                      src="/images/projects/yigui-app-2025/同理心地图.png"
-                      alt="系统运维监控"
-                      preset="photo"
-                      class="hardware-image"
-                      :style="{ objectFit: 'contain' }"
-                    />
-                    <span class="gallery-caption">系统运维与监控策略</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 后端技术栈 -->
-            <div class="tech-specs-section">
-              <h4>后端技术栈规格</h4>
-              <div class="specs-overview">
-                <div class="specs-category">
-                  <h5>🐍 Python框架</h5>
-                  <div class="specs-list">
-                    <span class="spec-item">FastAPI 0.104+</span>
-                    <span class="spec-item">SQLAlchemy ORM</span>
-                    <span class="spec-item">Pydantic验证</span>
-                  </div>
-                </div>
-                <div class="specs-category">
-                  <h5>🗄️ 数据存储</h5>
-                  <div class="specs-list">
-                    <span class="spec-item">SQLite数据库</span>
-                    <span class="spec-item">Redis缓存</span>
-                    <span class="spec-item">文件存储系统</span>
-                  </div>
-                </div>
-                <div class="specs-category">
-                  <h5>⚡ 异步处理</h5>
-                  <div class="specs-list">
-                    <span class="spec-item">Dramatiq队列</span>
-                    <span class="spec-item">Redis消息代理</span>
-                    <span class="spec-item">后台任务管理</span>
-                  </div>
-                </div>
-                <div class="specs-category">
-                  <h5>🚀 部署运维</h5>
-                  <div class="specs-list">
-                    <span class="spec-item">Ubuntu 20.04</span>
-                    <span class="spec-item">Nginx + SSL</span>
-                    <span class="spec-item">Gunicorn WSGI</span>
-                  </div>
-                </div>
-              </div>
+              <h4>部署与运维</h4>
+              <p>
+                服务器部署在Ubuntu 20.04上，用Nginx做反向代理处理HTTPS和负载均衡，
+                用Gunicorn运行Python应用，支持多进程并发。
+                所有服务都用systemd管理，确保崩溃后能自动重启。
+                日志统一收集，方便排查问题和性能优化。
+              </p>
             </div>
           </div>
         </div>
@@ -1033,6 +812,19 @@
               如何在技术创新与用户体验之间找到平衡。这次获得西南赛区二等奖不仅是对技术实力的认可，
               更是对我产品思维和解决实际问题能力的肯定。
             </p>
+
+            <div class="concept-diagram">
+              <div class="gallery-item" @click="openImageModal('/images/projects/yigui-app-2025/未来设计双重体验概念图.png', '未来设计双重体验概念图')">
+                <NuxtImg
+                  src="/images/projects/yigui-app-2025/未来设计双重体验概念图.png"
+                  alt="未来设计双重体验概念图"
+                  preset="photo"
+                  class="diagram-image clickable-image"
+                  :style="{ objectFit: 'contain' }"
+                />
+                <span class="gallery-caption">未来设计双重体验概念 - 个性化虚拟试穿的愿景展示</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1107,7 +899,7 @@
         <div class="hero-section">
           <div class="hero-content">
             <div class="hero-text">
-              <span class="project-date">2024年6月29日 - 7月20日</span>
+              <span class="project-date">2024年6月29日 - 2024年7月20日</span>
               <h1 class="hero-title">NUS SOC SWS 2024</h1>
                   <h2 class="hero-subtitle">Designing Interaction Interfaces: UI/UX in the Digital World</h2>
                   <div class="hero-badges">
@@ -1503,7 +1295,7 @@
         <div class="hero-section">
           <div class="hero-content">
             <div class="hero-text">
-              <span class="project-date">2024年9月</span>
+              <span class="project-date">2024年9月-2025年11月</span>
               <h1 class="hero-title">"盟升杯"电子设计竞赛</h1>
                   <h2 class="hero-subtitle">智能声源识别定位系统</h2>
                   <div class="hero-badges">
@@ -1663,7 +1455,7 @@
               <h4>完整源码</h4>
               <p>由于代码文件较多且结构复杂，完整的软件源码已上传至GitHub仓库，包含Keil代码、设计报告、MATLAB仿真代码、Python分析代码等。</p>
             </div>
-            <a href="https://github.com/yourusername/mengsheng-sound-localization" target="_blank" class="github-repo-btn">
+            <a href="https://github.com/narmi924/mengsheng-cup-2024" target="_blank" class="github-repo-btn">
               <svg class="github-icon" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
               </svg>
@@ -1766,7 +1558,7 @@
               language="matlab"
               fileName="tdoa_localization.m"
               complexity="时间复杂度: O(n)"
-              github-url="https://github.com/yourusername/project"
+              github-url="https://github.com/narmi924/mengsheng-cup-2024/blob/main/TDOA%E7%AE%97%E6%B3%95%E4%BB%BF%E7%9C%9F.m"
             />
 
             <div class="simulation-results">
@@ -2252,7 +2044,7 @@
         <div class="hero-section">
           <div class="hero-content">
             <div class="hero-text">
-              <span class="project-date">2025年1月-2025年2月</span>
+              <span class="project-date">2025年4月-2025年6月</span>
               <h1 class="hero-title">LED语音交互灯板</h1>
               <h2 class="hero-subtitle">智能照明系统设计与实现 - 课程设计</h2>
               <div class="hero-badges">
@@ -3756,25 +3548,6 @@ const showLedCertificates = ref(false)
 // 项目数据 - 按时间从近到旧排序
 const projects = ref([
   {
-    id: 'led-voice-2025',
-    title: 'LED语音交互灯板',
-    year: 2025,
-    category: '硬件项目',
-    status: 'completed',
-    hasDetails: true,
-    icon: '💡',
-    coverImage: '/images/projects/led-voice-2025/cover.png',
-    description: '我设计的基于Arduino UNO和ASR-PRO语音识别模块的智能LED显示系统，通过语音指令控制多种灯光效果',
-    badges: [
-      { text: '硬件系统开发', type: 'badge-accent' },
-      { text: 'Arduino编程', type: 'badge-info' },
-    ],
-    stats: [
-      { value: '92/100', label: '项目成绩' },
-      { value: '93/100', label: '课程成绩' }
-    ]
-  },
-  {
     id: 'mobile-app-2025',
     title: '中国高校计算机大赛—移动应用创新赛',
     year: 2025,
@@ -3810,6 +3583,25 @@ const projects = ref([
     stats: [
       { value: '100%', label: '功能完成' },
       { value: '50天以上', label: '平稳运行' }
+    ]
+  },
+  {
+    id: 'led-voice-2025',
+    title: 'LED语音交互灯板',
+    year: 2025,
+    category: '硬件项目',
+    status: 'completed',
+    hasDetails: true,
+    icon: '💡',
+    coverImage: '/images/projects/led-voice-2025/cover.png',
+    description: '我设计的基于Arduino UNO和ASR-PRO语音识别模块的智能LED显示系统，通过语音指令控制多种灯光效果',
+    badges: [
+      { text: '硬件系统开发', type: 'badge-accent' },
+      { text: 'Arduino编程', type: 'badge-info' },
+    ],
+    stats: [
+      { value: '92/100', label: '项目成绩' },
+      { value: '93/100', label: '课程成绩' }
     ]
   },
   {
@@ -6643,6 +6435,36 @@ onMounted(() => {
   @apply w-5 h-5;
 }
 
+/* 简化的内容布局样式 */
+.simple-content {
+  @apply max-w-4xl mx-auto px-4;
+}
+
+.content-description {
+  @apply space-y-6;
+}
+
+.content-description p {
+  @apply text-gray-700 leading-relaxed text-base;
+}
+
+.content-description h4 {
+  @apply text-lg font-semibold text-gray-900 mt-8 mb-3;
+}
+
+.content-description strong {
+  @apply font-semibold text-gray-800;
+}
+
+/* 图表和概念图样式 */
+.algorithm-diagram, .architecture-diagram, .concept-diagram {
+  @apply my-8 flex justify-center;
+}
+
+.diagram-image {
+  @apply w-full max-w-4xl rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow;
+}
+
 /* 盟升杯项目特有样式 */
 .technical-highlights {
   @apply mt-6;
@@ -6812,8 +6634,12 @@ onMounted(() => {
   @apply text-gray-600 leading-relaxed;
 }
 
+.github-buttons {
+  @apply flex flex-col sm:flex-row gap-4 mt-6;
+}
+
 .github-repo-btn {
-  @apply inline-flex items-center gap-3 bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-medium transition-colors;
+  @apply inline-flex items-center justify-center gap-3 bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-medium transition-colors flex-1 sm:flex-initial;
 }
 
 .github-icon {
