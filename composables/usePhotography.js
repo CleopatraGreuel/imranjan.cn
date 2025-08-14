@@ -71,7 +71,7 @@ export const usePhotography = () => {
               orientation: 'portrait'
             },
             {
-              src: '/images/photography/街头风室内/11.webp',
+              src: '/images/photography/街头风室内/11.JPG',
               alt: 'Dilyar',
               orientation: 'landscape',
               size: 'large'
