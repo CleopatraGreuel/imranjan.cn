@@ -284,7 +284,7 @@ export const usePhotography = () => {
               orientation: 'portrait'
             },
             {
-              src: '/images/photography/校园/11.JPG',
+              src: '/images/photography/校园/11.webp',
               alt: '校园生活',
               orientation: 'landscape',
               size: 'large'
